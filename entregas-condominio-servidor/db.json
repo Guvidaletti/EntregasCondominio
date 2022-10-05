@@ -1,0 +1,79 @@
+{
+  "usuarios": [
+    {
+      "id": 1,
+      "tipo": "SEGURANCA",
+      "nome": "Gustavo Vidaletti",
+      "iniciais": "GV"
+    },
+    {
+      "id": 2,
+      "tipo": "PORTEIRO",
+      "nome": "Ramiro Nascimento",
+      "iniciais": "RN"
+    }
+  ],
+  "casas": [
+    {
+      "id": 1
+    },
+    {
+      "id": 2
+    }
+  ],
+  "entregas": [
+    {
+      "id": 1,
+      "dataHora": 1664325325445,
+      "descricao": "Primeira entrega",
+      "casaId": 1,
+      "casasId": 1,
+      "usuarioId": 1,
+      "usuariosId": 1
+    },
+    {
+      "id": 2,
+      "dataHora": 1664325375442,
+      "descricao": "Segunda entrega",
+      "casaId": 1,
+      "casasId": 1,
+      "usuarioId": 1,
+      "usuariosId": 1
+    }
+  ],
+  "retiradas": [
+    {
+      "id": 1,
+      "dataHora": 1664325395445,
+      "entregaId": 1,
+      "entregasId": 1,
+      "residenteId": 1,
+      "residentesId": 1,
+      "usuarioId": 1,
+      "usuariosId": 1
+    }
+  ],
+  "residentes": [
+    {
+      "id": 1,
+      "nome": "Morador Um",
+      "casaId": 1,
+      "casasId": 1,
+      "status": true
+    },
+    {
+      "id": 2,
+      "nome": "Morador Desativado",
+      "casaId": 1,
+      "casasId": 1,
+      "status": false
+    },
+    {
+      "id": 3,
+      "nome": "Morador Três",
+      "casaId": 1,
+      "casasId": 1,
+      "status": true
+    }
+  ]
+}
