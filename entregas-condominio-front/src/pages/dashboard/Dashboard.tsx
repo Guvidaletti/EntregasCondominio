@@ -11,7 +11,7 @@ import { Paths } from 'routes/Routes';
 export default function Dashboard() {
   const navigate = useNavigate();
   return (
-    <Container position='absolute'>
+    <Container position='absolute' verticalPadding>
       <Row>
         <Col>
           <BreadCrumb

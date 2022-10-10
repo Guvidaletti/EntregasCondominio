@@ -7,7 +7,7 @@ import {
   HomeIcon,
   PieChartIcon,
   Row,
-  Title
+  Title,
 } from 'plataforma-fundacao-componentes';
 import { useNavigate } from 'react-router-dom';
 import { Paths } from 'routes/Routes';
@@ -83,7 +83,7 @@ Telas
 export default function Home() {
   const navigate = useNavigate();
   return (
-    <Container position='absolute'>
+    <Container position='absolute' verticalPadding>
       <Row>
         <Col>
           <BreadCrumb path={[{ label: 'Início' }]} />

@@ -33,7 +33,7 @@ export default function Login() {
   }, [usuario]);
 
   return (
-    <Container position='absolute'>
+    <Container position='absolute' verticalPadding>
       <Row>
         <Col centralized>
           <Logo size={200} />
