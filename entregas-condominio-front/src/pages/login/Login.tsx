@@ -1,13 +1,25 @@
 import Logo from 'assets/icons/logo';
 import { AuthContext } from 'contexts/authContext/AuthContext';
+import { LayoutContext } from 'contexts/layoutContext/LayoutContext';
+import {
+  Button,
+  ButtonThemes,
+  Col,
+  Container,
+  Input,
+  Row,
+  Select,
+  ToastTypes,
+} from 'plataforma-fundacao-componentes';
 import { useContext, useLayoutEffect, useState } from 'react';
-import { Button, Container, Form, Row } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
 import { Paths } from 'routes/Routes';
 import { TipoUsuario } from 'typings/typings';
 
+const cols = [12, 10, 8, 7, 6] as any;
 export default function Login() {
   const { login, usuario } = useContext(AuthContext);
+  const { showToast } = useContext(LayoutContext);
   const [nome, setNome] = useState('');
   const [iniciais, setIniciais] = useState('');
   const [tipo, setTipo] = useState<TipoUsuario | string>('');
@@ -21,23 +33,18 @@ export default function Login() {
   }, [usuario]);
 
   return (
-    <Container>
+    <Container position='absolute'>
       <Row>
-        <Logo size={200} />
+        <Col centralized>
+          <Logo size={200} />
+        </Col>
       </Row>
       <Row>
-        <Form
-          onSubmit={(evt) => {
-            evt.preventDefault();
-            login({ nome, iniciais, tipo: tipo as TipoUsuario });
-          }}
-        >
-          <Row className='mb-3'>
-            <Form.Label htmlFor='nome'>Nome</Form.Label>
-            <Form.Control
-              id='nome'
-              name='nome'
-              type='text'
+        <Row centralized>
+          <Col cols={cols}>
+            <Input
+              label='Nome'
+              placeholder='Digite o nome...'
               value={nome}
               onChange={(evt) => {
                 setIniciais(
@@ -51,53 +58,64 @@ export default function Login() {
                 setNome(evt.target.value);
               }}
             />
-          </Row>
-          <Row className='mb-3'>
-            <Form.Label htmlFor='iniciais'>Iniciais</Form.Label>
-            <Form.Control
-              id='iniciais'
-              name='iniciais'
-              type='text'
+          </Col>
+        </Row>
+        <Row centralized>
+          <Col cols={cols}>
+            <Input
+              label='Iniciais'
               value={iniciais}
               onChange={(evt) => setIniciais(evt.target.value)}
+              placeholder='Digite as iniciais...'
             />
-          </Row>
-
-          <Row className='mb-3'>
-            <Form.Label htmlFor='tipoUsuario'>Tipo de Usuário</Form.Label>
-            <Form.Select
-              id='tipoUsuario'
-              name='tipoUsuario'
+          </Col>
+        </Row>
+        <Row centralized>
+          <Col cols={cols}>
+            <Select
+              label='Tipo de Usuário'
+              placeholder='Selecione...'
               value={tipo}
-              onChange={(evt) => setTipo(evt.target.value as TipoUsuario)}
-            >
-              <option disabled value=''>
-                Selecione...
-              </option>
-              <option value={TipoUsuario.Porteiro}>Porteiro</option>
-              <option value={TipoUsuario.Seguranca}>Segurança</option>
-            </Form.Select>
-          </Row>
-          <Row>
+              onChange={(evt) => setTipo(evt as TipoUsuario)}
+              options={[
+                { value: TipoUsuario.Porteiro, label: 'Porteiro' },
+                { value: TipoUsuario.Seguranca, label: 'Segurança' },
+              ]}
+            />
+          </Col>
+        </Row>
+        <Row centralized>
+          <Col cols={cols}>
             <Button
-              type='submit'
-              className='mt-3'
+              w100
+              theme={ButtonThemes.Primary}
+              onClick={() => {
+                login({ nome, iniciais, tipo: tipo as TipoUsuario }).catch(
+                  () => {
+                    showToast({
+                      label: 'Erro ao fazer login!',
+                      theme: ToastTypes.Error,
+                      showStatusBar: true,
+                      timeout: 3000,
+                      pauseOnFocusLoss: true,
+                      prevent: true,
+                    });
+                  }
+                );
+              }}
               disabled={!nome || !tipo || !iniciais}
             >
               Entrar
             </Button>
-          </Row>
-          <Row>
-            <Button
-              className='mt-3'
-              type='button'
-              variant='light'
-              onClick={() => {}}
-            >
+          </Col>
+        </Row>
+        <Row centralized>
+          <Col cols={cols}>
+            <Button theme={ButtonThemes.Default} onClick={() => {}} w100>
               Cadastro
             </Button>
-          </Row>
-        </Form>
+          </Col>
+        </Row>
       </Row>
     </Container>
   );

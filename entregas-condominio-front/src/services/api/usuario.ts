@@ -4,13 +4,17 @@ const usuariosApi = `${process.env.REACT_APP_API_URL}/usuarios`;
 
 export const loginUsuario = async (usuario: UsuarioType) => {
   const usuarioExistente = await getUsuarioByNome(usuario.nome);
-  return (
-    usuarioExistente.data &&
-    usuarioExistente.data.length &&
-    usuarioExistente.data[0].nome === usuario.nome &&
-    usuarioExistente.data[0].iniciais === usuario.iniciais &&
-    usuarioExistente.data[0].tipo === usuario.tipo
-  );
+  if (
+    !(
+      usuarioExistente.data &&
+      usuarioExistente.data.length &&
+      usuarioExistente.data[0].nome === usuario.nome &&
+      usuarioExistente.data[0].iniciais === usuario.iniciais &&
+      usuarioExistente.data[0].tipo === usuario.tipo
+    )
+  ) {
+    throw new Error('Não foi possível fazer login');
+  }
 };
 
 export const createUsuario = async (usuario: UsuarioType) => {

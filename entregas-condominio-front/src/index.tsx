@@ -1,18 +1,23 @@
 import ReactDOM from 'react-dom/client';
 import { BrowserRouter } from 'react-router-dom';
 import './assets/styles/default.scss';
+import 'plataforma-fundacao-componentes/dist/index.css';
 import 'react-toastify/dist/ReactToastify.css';
 import AuthProvider from './contexts/authContext/AuthContext';
 import reportWebVitals from './reportWebVitals';
 import Routes from './routes/Routes';
+import LayoutProvider from 'contexts/layoutContext/LayoutContext';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
+
 root.render(
   <BrowserRouter>
     <AuthProvider>
-      <Routes />
+      <LayoutProvider>
+        <Routes />
+      </LayoutProvider>
     </AuthProvider>
   </BrowserRouter>
 );
