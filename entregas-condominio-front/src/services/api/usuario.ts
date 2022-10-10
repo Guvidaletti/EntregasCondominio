@@ -1,11 +1,21 @@
 import axios from 'axios';
 import { UsuarioEntregaRetiradaType, UsuarioType } from 'typings/typings';
+const usuariosApi = `${process.env.REACT_APP_API_URL}/usuarios`;
 
-const usuariosApi = `${process.env.api}/usuarios`;
+export const loginUsuario = async (usuario: UsuarioType) => {
+  const usuarioExistente = await getUsuarioByNome(usuario.nome);
+  return (
+    usuarioExistente.data &&
+    usuarioExistente.data.length &&
+    usuarioExistente.data[0].nome === usuario.nome &&
+    usuarioExistente.data[0].iniciais === usuario.iniciais &&
+    usuarioExistente.data[0].tipo === usuario.tipo
+  );
+};
 
 export const createUsuario = async (usuario: UsuarioType) => {
-  const usuarioExiste = await getUsuarioByNome(usuario.nome);
-  if (usuarioExiste.data && usuarioExiste.data.length) {
+  const usuarioExistente = await getUsuarioByNome(usuario.nome);
+  if (usuarioExistente.data && usuarioExistente.data.length) {
     throw new Error('Usuário já existe');
   }
 

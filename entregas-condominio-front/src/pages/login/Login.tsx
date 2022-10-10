@@ -1,9 +1,9 @@
+import Logo from 'assets/icons/logo';
+import { AuthContext } from 'contexts/authContext/AuthContext';
 import { useContext, useLayoutEffect, useState } from 'react';
 import { Button, Container, Form, Row } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
 import { Paths } from 'routes/Routes';
-import Logo from 'assets/icons/logo';
-import { AuthContext } from 'contexts/authContext/AuthContext';
 import { TipoUsuario } from 'typings/typings';
 
 export default function Login() {
@@ -87,9 +87,18 @@ export default function Login() {
               Entrar
             </Button>
           </Row>
+          <Row>
+            <Button
+              className='mt-3'
+              type='button'
+              variant='light'
+              onClick={() => {}}
+            >
+              Cadastro
+            </Button>
+          </Row>
         </Form>
       </Row>
-      <Row></Row>
     </Container>
   );
 }

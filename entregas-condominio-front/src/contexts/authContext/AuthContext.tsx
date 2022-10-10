@@ -5,7 +5,7 @@ import {
   useEffect,
   useState,
 } from 'react';
-import { createUsuario } from 'services/api/usuario';
+import { loginUsuario } from 'services/api/usuario';
 import { UsuarioType } from '../../typings/typings';
 
 export interface AuthContextType {
@@ -34,7 +34,7 @@ export default function AuthProvider({ children }: { children: ReactNode }) {
 
   const login = useCallback((user: UsuarioType) => {
     return new Promise<void>((resolve, reject) => {
-      createUsuario(user)
+      loginUsuario(user)
         .then(() => {
           sessionStorage.setItem(USUARIO_LOGADO_KEY, JSON.stringify(user));
           setUsuario(user);
