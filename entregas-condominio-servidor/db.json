@@ -11,6 +11,24 @@
       "tipo": "PORTEIRO",
       "nome": "Ramiro Nascimento",
       "iniciais": "RN"
+    },
+    {
+      "nome": "Gustavo Dois",
+      "iniciais": "GD",
+      "tipo": "PORTEIRO",
+      "id": 3
+    },
+    {
+      "nome": "Gustavo Tres",
+      "iniciais": "GT",
+      "tipo": "SEGURANCA",
+      "id": 4
+    },
+    {
+      "nome": "Gustavo Quatro",
+      "iniciais": "GQ",
+      "tipo": "SEGURANCA",
+      "id": 5
     }
   ],
   "casas": [

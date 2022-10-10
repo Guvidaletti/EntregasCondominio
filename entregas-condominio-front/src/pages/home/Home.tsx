@@ -14,15 +14,7 @@ import { Paths } from 'routes/Routes';
 
 const cols = [12, 6, 6, 4, 4] as any;
 /**
- Funcionalidades: 
-  Usuario
-   - Cadastro
-
 Telas
-  Login:
-    - Selecionar o usuário atual (não entendi muito bem);
-    - Cadastro (TipoUsuario, Nome, Iniciais [campo automatico, mas editavel])
-  
   Tela Inicial
     - Entregas
     - Moradores
