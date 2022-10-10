@@ -1,0 +1,11 @@
+// $theme-colors: (
+//   'info': tomato,
+//   'danger': teal,
+// );
+
+@import '~bootstrap/scss/bootstrap';
+@import './constants';
+
+body {
+  box-sizing: border-box;
+}
