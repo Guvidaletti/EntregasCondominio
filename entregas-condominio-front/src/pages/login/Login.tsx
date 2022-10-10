@@ -1,14 +1,25 @@
-import { useState, useContext } from 'react';
+import { useContext, useLayoutEffect, useState } from 'react';
 import { Button, Container, Form, Row } from 'react-bootstrap';
-import Logo from '../../assets/icons/logo';
-import { AuthContext } from '../../contexts/authContext/AuthContext';
-import { TipoUsuario } from '../../typings/typings';
+import { useNavigate } from 'react-router-dom';
+import { Paths } from 'routes/Routes';
+import Logo from 'assets/icons/logo';
+import { AuthContext } from 'contexts/authContext/AuthContext';
+import { TipoUsuario } from 'typings/typings';
 
 export default function Login() {
-  const { login } = useContext(AuthContext);
+  const { login, usuario } = useContext(AuthContext);
   const [nome, setNome] = useState('');
   const [iniciais, setIniciais] = useState('');
   const [tipo, setTipo] = useState<TipoUsuario | string>('');
+  const navigate = useNavigate();
+
+  useLayoutEffect(() => {
+    if (usuario) {
+      navigate(Paths.home, { replace: true });
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [usuario]);
+
   return (
     <Container>
       <Row>

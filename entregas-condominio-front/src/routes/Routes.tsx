@@ -1,20 +1,17 @@
-import { useContext, Fragment } from 'react';
+import Home from 'pages/home/Home';
+import Login from 'pages/login/Login';
 import { Route, Routes as ReactRouterDomRoutes } from 'react-router-dom';
-import { AuthContext } from '../contexts/authContext/AuthContext';
-import Login from '../pages/login/Login';
 
-export const paths = {
+export const Paths = {
   login: '/',
+  home: '/home',
 };
 
 export default function Routes() {
-  const authContext = useContext(AuthContext);
-
   return (
     <ReactRouterDomRoutes>
-      {authContext.usuario ? <Fragment>Teste</Fragment> : undefined}
-      <Route path={paths.login} element={<Login />} />
-      {/* <Route path='about' element={<About />} /> */}
+      <Route path={Paths.home} element={<Home />} />
+      <Route path={Paths.login} element={<Login />} />
     </ReactRouterDomRoutes>
   );
 }
