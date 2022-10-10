@@ -10,6 +10,11 @@ export type UsuarioType = {
   iniciais: string;
 };
 
+export interface UsuarioEntregaRetiradaType extends UsuarioType {
+  entregas: EntregaType[];
+  retiradas: RetiradaType[];
+}
+
 export type CasaType = {
   id: number;
 };
