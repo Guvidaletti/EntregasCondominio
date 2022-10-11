@@ -15,25 +15,7 @@ import { Paths } from 'routes/Routes';
 const cols = [12, 6, 6, 4, 4] as any;
 /**
 Telas
-  Tela Inicial
-    - Entregas
-    - Moradores
-    - Dashboard
   
-  Tela de Moradores
-    - Incluir Novo Morador
-    - Tabela de listagem de Moradores (+ Filtros)
-        - Nome, 
-        - RG, 
-        - Nro da casa
-    - Marcar Morador como INATIVO (+Modal Confirm)
-        (Não pode mais receber entregas, Não pode ser reativado)
-    
-  Tela (Modal) de Inclusão de Morador
-    - Nome,
-    - RG,
-    - Seletor de Casa
-    - Cada casa pode ter no máximo 8 pessoas ATIVAS
   
   Tela Entregas
     - Botão de Registrar Entrega

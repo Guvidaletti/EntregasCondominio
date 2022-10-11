@@ -21,7 +21,8 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "jestCache": "jest --clearCache"
   },
   "eslintConfig": {
     "extends": [
@@ -48,5 +49,10 @@
     "@types/react-dom": "^18.0.6",
     "@types/react-transition-group": "^4.4.5",
     "sass": "^1.55.0"
+  },
+  "jest": {
+    "transformIgnorePatterns": [
+      "node_modules/(?!<package_name>)/"
+    ]
   }
 }

@@ -20,6 +20,7 @@ import { TipoUsuario } from 'typings/typings';
 import { getUniqueKey } from 'utils/HTMLUtils';
 
 const cols = [12, 10, 8, 7, 6] as any;
+const actionCols = [12, 6, 4, 3, 2] as any;
 export default function Login() {
   const { login, usuario } = useContext(AuthContext);
   const { showToast, openModal, closeModal } = useContext(LayoutContext);
@@ -40,7 +41,7 @@ export default function Login() {
       <Row>
         <Col centralized>
           <Logo size={200} />
-        </Col>
+        </Col>  
       </Row>
       <Row centralized>
         <Col cols={cols}>
@@ -87,7 +88,7 @@ export default function Login() {
         </Col>
       </Row>
       <Row centralized>
-        <Col cols={cols}>
+        <Col cols={actionCols}>
           <Button
             w100
             theme={ButtonThemes.Primary}
@@ -110,7 +111,7 @@ export default function Login() {
         </Col>
       </Row>
       <Row centralized>
-        <Col cols={cols}>
+        <Col cols={actionCols}>
           <Button
             theme={ButtonThemes.Default}
             onClick={() => {
