@@ -66,6 +66,15 @@
       "casaId": 2,
       "casasId": 2,
       "id": 4
+    },
+    {
+      "descricao": "mais uma entrega",
+      "dataHora": 1665508547941,
+      "usuarioId": 1,
+      "usuariosId": 1,
+      "casaId": 2,
+      "casasId": 2,
+      "id": 5
     }
   ],
   "retiradas": [
@@ -98,6 +107,16 @@
       "residenteId": 4,
       "residentesId": 4,
       "id": 3
+    },
+    {
+      "dataHora": 1665512377005,
+      "entregaId": 5,
+      "entregasId": 5,
+      "usuarioId": 1,
+      "usuariosId": 1,
+      "residenteId": 4,
+      "residentesId": 4,
+      "id": 4
     }
   ],
   "residentes": [

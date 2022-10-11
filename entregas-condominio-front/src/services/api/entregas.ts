@@ -25,3 +25,33 @@ export const getAllEntregasFiltered = async (filtrosTela: {
   const url = `${entregasApi}?${getMergedParamsFromObject(filtros)}`;
   return await axios.get<EntregaRetiradaUsuarioType[]>(url);
 };
+
+export const getQuantidadeEntregasUltimosSeteDias = async () => {
+  const url = `${entregasApi}/`;
+  const entregas = await axios.get<EntregaType[]>(url);
+  const d = new Date(new Date().getTime() - 7 * 24 * 60 * 1000).getTime();
+  return entregas.data.filter((entrega) => entrega.dataHora > d).length;
+};
+
+export const getTempoMedioRetiradasEntregas = async () => {
+  const url = `${entregasApi}?_embed=retiradas`;
+  const entregas = await axios.get<EntregaRetiradaUsuarioType[]>(url);
+  const arr: number[] = [];
+  entregas.data.forEach((e) => {
+    if (e.retiradas.length) {
+      arr.push(e.retiradas[0].dataHora - e.dataHora);
+    }
+  });
+  return (
+    arr.reduce((ac, atual) => {
+      return ac + atual;
+    }, 0) / arr.length
+  );
+};
+
+export const getQuantidadeEntregasNaoRetiradas = async () => {
+  const url = `${entregasApi}?_embed=retiradas`;
+  const entregas = await axios.get<EntregaRetiradaUsuarioType[]>(url);
+  return entregas.data.filter((e) => !e.retiradas || !e.retiradas.length)
+    .length;
+};
