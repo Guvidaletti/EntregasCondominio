@@ -1,6 +1,9 @@
+import CadastroMoradorModal from 'components/cadastroMoradorModal/CadastroMoradorModal';
 import { LayoutContext } from 'contexts/layoutContext/LayoutContext';
 import {
+  AddCircleIcon,
   BreadCrumb,
+  Button,
   Col,
   Container,
   DestructiveModal,
@@ -19,7 +22,11 @@ import { ColumnObject } from 'plataforma-fundacao-componentes/dist/components/ta
 import { useCallback, useContext, useEffect, useMemo, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Paths } from 'routes/Routes';
-import { desativarMorador, getAllMoradores } from 'services/api/moradores';
+import {
+  createMorador,
+  desativarMorador,
+  getAllMoradores,
+} from 'services/api/moradores';
 import { ResidenteType } from 'typings/typings';
 import { getUniqueKey } from 'utils/HTMLUtils';
 /**
@@ -88,7 +95,7 @@ export default function Moradores() {
         status: m.status ? 'Ativo' : 'Desativado',
         actions: (
           <DropdownMenu
-            opened={dropOpened?.includes(m.rg)}
+            opened={dropOpened === m.rg}
             setOpened={() => toggleOpened(m.rg, dropOpened !== m.rg)}
             content={
               <div>
@@ -99,6 +106,8 @@ export default function Moradores() {
                     openModal(DestructiveModal, {
                       modalKey,
                       title: 'Desativar Morador',
+                      preventMaskExit: true,
+                      mobileOnXS: true,
                       children:
                         'Deseja realmente remover este morador? Esta operação não pode ser desfeita.',
                       onClose: () => closeModal(modalKey),
@@ -145,12 +154,50 @@ export default function Moradores() {
         </Col>
       </Row>
       <Row>
-        <TableWithOverflow
-          lines={lines}
-          columns={columns}
-          showTopNavigator={false}
-          noResultMessage='Moradores não encontrados'
-        />
+        <Col buttonActionsCol end>
+          <Button
+            leftIcon={<AddCircleIcon />}
+            onClick={() => {
+              const modalKey = getUniqueKey();
+              openModal(CadastroMoradorModal, {
+                modalKey,
+                preventMaskExit: true,
+                mobileOnXS: true,
+                onConfirm: (morador) => {
+                  return createMorador(morador)
+                    .then(() => {
+                      carregar();
+                      closeModal(modalKey);
+                    })
+                    .catch((err) => {
+                      showToast({
+                        label: err.message,
+                        theme: ToastTypes.Error,
+                        showStatusBar: true,
+                        timeout: 3000,
+                        pauseOnFocusLoss: true,
+                        prevent: true,
+                      });
+                    });
+                },
+                onCancel: () => closeModal(modalKey),
+                onClose: () => closeModal(modalKey),
+              });
+            }}
+          >
+            Adicionar morador
+          </Button>
+        </Col>
+      </Row>
+      <Row>
+        <Col>
+          <TableWithOverflow
+            lines={lines}
+            columns={columns}
+            showTopNavigator={false}
+            noResultMessage='Moradores não encontrados'
+          />
+        </Col>
       </Row>
       {loading ? (
         <Row>

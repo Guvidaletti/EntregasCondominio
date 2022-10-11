@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { CasaComResidentesType } from 'typings/typings';
+import { CasaComResidentesType, CasaType } from 'typings/typings';
 
 const casasApi = `${process.env.REACT_APP_API_URL}/casas`;
 
@@ -16,3 +16,8 @@ export const getCasaByIdComMoradoresAtivos = async (
   }
   return Promise.reject();
 };
+
+export const getAllCasas = async () => {
+  const url = casasApi;
+  return axios.get<CasaType[]>(url);
+}

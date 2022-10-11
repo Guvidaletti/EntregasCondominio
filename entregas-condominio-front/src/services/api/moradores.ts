@@ -32,11 +32,10 @@ export const getMoradorByRG = async (rg: string) => {
   if (residente.data && residente.data.length) {
     return residente.data[0];
   }
-  return Promise.reject();
+  return null;
 };
 
 export const desativarMorador = async (morador: ResidenteType) => {
   const url = `${moradoresApi}/${morador.id}`;
   return axios.put(url, { ...morador, status: false });
 };
-

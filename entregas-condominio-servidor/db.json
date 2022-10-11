@@ -19,6 +19,15 @@
     },
     {
       "id": 2
+    },
+    {
+      "id": 3
+    },
+    {
+      "id": 4
+    },
+    {
+      "id": 5
     }
   ],
   "entregas": [
@@ -39,6 +48,15 @@
       "casasId": 1,
       "usuarioId": 1,
       "usuariosId": 1
+    },
+    {
+      "descricao": "Teste",
+      "dataHora": 1665503406705,
+      "usuarioId": 1,
+      "usuariosId": 1,
+      "casaId": 2,
+      "casasId": 2,
+      "id": 3
     }
   ],
   "retiradas": [
@@ -77,6 +95,14 @@
       "casaId": 1,
       "casasId": 1,
       "status": true
+    },
+    {
+      "nome": "GustavoQuatro",
+      "rg": "112121231",
+      "status": true,
+      "casaId": 2,
+      "casasId": 2,
+      "id": 4
     }
   ]
 }

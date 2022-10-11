@@ -24,7 +24,7 @@ export interface CasaComResidentesType extends CasaType {
 }
 
 export type EntregaType = {
-  id: number;
+  id?: number;
   dataHora: number;
   descricao: string;
   casaId: number;
@@ -33,8 +33,13 @@ export type EntregaType = {
   usuariosId: number;
 };
 
+export interface EntregaRetiradaUsuarioType extends EntregaType {
+  retiradas: RetiradaType[];
+  usuario: UsuarioType;
+}
+
 export type RetiradaType = {
-  id: number;
+  id?: number;
   dataHora: number;
   entregaId: number;
   entregasId: number;
@@ -45,7 +50,7 @@ export type RetiradaType = {
 };
 
 export type ResidenteType = {
-  id: number;
+  id?: number;
   nome: string;
   rg: string;
   casaId: number;

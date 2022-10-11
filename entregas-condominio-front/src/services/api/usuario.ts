@@ -15,6 +15,7 @@ export const loginUsuario = async (usuario: UsuarioType) => {
   ) {
     throw new Error('Não foi possível fazer login');
   }
+  return usuarioExistente.data[0]
 };
 
 export const createUsuario = async (usuario: UsuarioType) => {

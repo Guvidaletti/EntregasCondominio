@@ -38,9 +38,9 @@ export default function AuthProvider({ children }: { children: ReactNode }) {
     return new Promise<void>((resolve, reject) => {
       setCarregandoDados(true);
       loginUsuario(user)
-        .then(() => {
-          sessionStorage.setItem(USUARIO_LOGADO_KEY, JSON.stringify(user));
-          setUsuario(user);
+        .then((usuarioExistente) => {
+          sessionStorage.setItem(USUARIO_LOGADO_KEY, JSON.stringify(usuarioExistente));
+          setUsuario(usuarioExistente);
           resolve();
         })
         .catch(() => {

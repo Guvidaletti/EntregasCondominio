@@ -41,7 +41,7 @@ export default function Login() {
       <Row>
         <Col centralized>
           <Logo size={200} />
-        </Col>  
+        </Col>
       </Row>
       <Row centralized>
         <Col cols={cols}>
@@ -119,6 +119,7 @@ export default function Login() {
               openModal(CadastroModal, {
                 modalKey: mk,
                 preventMaskExit: true,
+                mobileOnXS: true,
                 onConfirm: async (usuario) => {
                   return createUsuario(usuario)
                     .then(() => {
