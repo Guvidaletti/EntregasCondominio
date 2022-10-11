@@ -23,8 +23,9 @@ describe('IntegrationTests', () => {
   } as UsuarioType;
 
   beforeAll(async () => {
-    if ((await getUsuarioByNome(usuario.nome)).data.length) {
-      await deleteUsuarioByNome(usuario.nome);
+    const getByNome = await getUsuarioByNome(usuario.nome);
+    if (getByNome.data.length) {
+      usuario = getByNome.data[0];
     }
     if ((await getUsuarioByNome(usuarioSemRegistros.nome)).data.length) {
       await deleteUsuarioByNome(usuarioSemRegistros.nome);
@@ -32,9 +33,15 @@ describe('IntegrationTests', () => {
   });
 
   it('FluxoCadastroLogin', async () => {
-    const create = await createUsuario(usuario);
-    expect(create.status).toBe(201);
-    usuario.id = create.data.id;
+    const getByNome = await getUsuarioByNome(usuario.nome);
+    if (getByNome.data.length) {
+      usuario = getByNome.data[0]
+    }
+    
+    const createOrGet = usuario.id
+      ? await getUsuarioByNome(usuario.nome)
+      : await createUsuario(usuario);
+    expect(createOrGet.status).toBe(!usuario.id ? 201 : 200);
 
     const req = await loginUsuario(usuario);
     expect(req.nome).toBe(usuario.nome);
