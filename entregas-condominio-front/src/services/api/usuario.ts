@@ -15,7 +15,7 @@ export const loginUsuario = async (usuario: UsuarioType) => {
   ) {
     throw new Error('Não foi possível fazer login');
   }
-  return usuarioExistente.data[0]
+  return usuarioExistente.data[0];
 };
 
 export const createUsuario = async (usuario: UsuarioType) => {
@@ -24,7 +24,7 @@ export const createUsuario = async (usuario: UsuarioType) => {
     throw new Error('Usuário já existe');
   }
 
-  return axios.post<void>(usuariosApi, usuario);
+  return axios.post<UsuarioType>(usuariosApi, usuario);
 };
 
 export const getAllUsuarios = () => {

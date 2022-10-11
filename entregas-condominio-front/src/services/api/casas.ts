@@ -17,7 +17,12 @@ export const getCasaByIdComMoradoresAtivos = async (
   return Promise.reject();
 };
 
+export const createCasa = async () => {
+  const url = casasApi;
+  return await axios.get<CasaType>(url);
+};
+
 export const getAllCasas = async () => {
   const url = casasApi;
-  return axios.get<CasaType[]>(url);
-}
+  return await axios.get<CasaType[]>(url);
+};

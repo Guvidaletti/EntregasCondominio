@@ -11,6 +11,12 @@
       "tipo": "PORTEIRO",
       "nome": "Ramiro Nascimento",
       "iniciais": "RN"
+    },
+    {
+      "nome": "Entrega Teste",
+      "iniciais": "ET",
+      "tipo": "SEGURANCA",
+      "id": 3
     }
   ],
   "casas": [
@@ -28,6 +34,9 @@
     },
     {
       "id": 5
+    },
+    {
+      "id": 6
     }
   ],
   "entregas": [
@@ -93,6 +102,15 @@
       "casaId": 1,
       "casasId": 1,
       "id": 7
+    },
+    {
+      "casaId": 1,
+      "casasId": 1,
+      "dataHora": 1665519540420,
+      "descricao": "DescricaoTST",
+      "usuarioId": 3,
+      "usuariosId": 3,
+      "id": 8
     }
   ],
   "retiradas": [

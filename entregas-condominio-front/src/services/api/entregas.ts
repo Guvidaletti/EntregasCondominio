@@ -4,7 +4,7 @@ import { getMergedParamsFromObject } from 'utils/RequestUtils';
 const entregasApi = `${process.env.REACT_APP_API_URL}/entregas`;
 
 export const createEntrega = async (entrega: EntregaType) => {
-  return await axios.post<void>(entregasApi, entrega);
+  return await axios.post<EntregaType>(entregasApi, entrega);
 };
 
 export const getEntregaById = async (id: number) => {
