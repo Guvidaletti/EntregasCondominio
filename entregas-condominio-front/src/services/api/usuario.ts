@@ -36,6 +36,11 @@ export const getUsuarioByNome = (nome: string) => {
   return axios.get<UsuarioType[]>(url);
 };
 
+export const getUsuarioById = (id: number) => {
+  const url = `${usuariosApi}?id=${id}`;
+  return axios.get<UsuarioType[]>(url);
+};
+
 export const deleteUsuarioByNome = async (nome: string) => {
   const url = `${usuariosApi}?nome=${nome}&_embed=entregas&_embed=retiradas`;
   const usuario = await axios.get<UsuarioEntregaRetiradaType[]>(url);
