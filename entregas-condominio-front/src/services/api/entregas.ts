@@ -8,8 +8,8 @@ export const createEntrega = async (entrega: EntregaType) => {
 };
 
 export const getEntregaById = async (id: number) => {
-  const urlGet = `${entregasApi}/${id}`;
-  return axios.get<EntregaType>(urlGet);
+  const urlGet = `${entregasApi}/${id}?_embed=retiradas&_expand=usuario`;
+  return await axios.get<EntregaRetiradaUsuarioType>(urlGet);
 };
 
 export const getAllEntregasFiltered = async (filtrosTela: {

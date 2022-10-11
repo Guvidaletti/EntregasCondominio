@@ -12,3 +12,14 @@ export const getMergedParamsFromObject = (obj: object) => {
     })
     .join('&');
 };
+
+export const objectKeysFiltered = <Type>(
+  obj: object,
+  keysToExclude: string[]
+): Type => {
+  const p = { ...obj } as any;
+  for (let k of keysToExclude) {
+    delete p[k];
+  }
+  return p as Type;
+};

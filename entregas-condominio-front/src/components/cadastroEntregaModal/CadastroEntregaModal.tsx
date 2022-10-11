@@ -29,7 +29,6 @@ export default function CadastroEntregaModal(props: CadastroEntregaModalProps) {
   const [casasOptions, setCasasOptions] = useState<SelectOptionsType[]>([]);
   const [loadingCasas, setLoadingCasas] = useState(false);
 
-  console.log(usuario)
   useEffect(() => {
     setLoadingCasas(true);
     getAllCasas()

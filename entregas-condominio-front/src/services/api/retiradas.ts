@@ -1,24 +1,23 @@
 import axios from 'axios';
-import { UsuarioEntregaRetiradaType, EntregaType, RetiradaType, ResidenteType } from 'typings/typings';
-import { getUsuarioById } from './usuario';
+import { RetiradaType } from 'typings/typings';
 import { getEntregaById } from './entregas';
+import { getMoradorAtivoById } from './moradores';
 const retiradasApi = `${process.env.REACT_APP_API_URL}/retiradas`;
 
-export const createRetirada = async (retirada:RetiradaType, usuario: UsuarioEntregaRetiradaType, residente : ResidenteType) => {
+export const createRetirada = async (retirada: RetiradaType) => {
+  const residente = await getMoradorAtivoById(retirada.residenteId);
+  if (!residente) {
+    throw new Error('Morador não existe!');
+  }
 
-    const usuarioExistente = await getUsuarioById(usuario.id!);
-    if (usuarioExistente.data && usuarioExistente.data.length) {
-      throw new Error('Usuário já existe');
-    }
+  const entregaExistente = await getEntregaById(retirada.entregaId);
+  if (!entregaExistente.data) {
+    throw new Error('Entrega não encontrada!');
+  }
 
-    const entregaExistente = await getEntregaById(retirada.entregaId);
-    if(entregaExistente.data){
+  if (entregaExistente.data.retiradas.length) {
+    throw new Error('Entrega já foi retirada!');
+  }
 
-    }
-
-    //TODO adicionar validacao do residente
-
-
-    return axios.post<void>(retiradasApi,retirada);
-    
-  };
+  return axios.post<void>(retiradasApi, retirada);
+};

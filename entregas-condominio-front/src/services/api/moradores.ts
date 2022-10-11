@@ -14,6 +14,11 @@ export const getAllMoradoresAtivos = () => {
   return axios.get<ResidenteType[]>(url);
 };
 
+export const getAllMoradoresAtivosDaCasa = async (idCasa: number) => {
+  const url = `${moradoresApi}?status=true&casaId=${idCasa}`;
+  return await axios.get<ResidenteType[]>(url);
+};
+
 export const createMorador = async (morador: ResidenteType) => {
   const casa = await getCasaByIdComMoradoresAtivos(morador.casaId);
   if (casa.residentes.length >= 8) {
@@ -28,6 +33,15 @@ export const createMorador = async (morador: ResidenteType) => {
 
 export const getMoradorByRG = async (rg: string) => {
   const url = `${moradoresApi}?rg=${rg}`;
+  const residente = await axios.get<ResidenteType[]>(url);
+  if (residente.data && residente.data.length) {
+    return residente.data[0];
+  }
+  return null;
+};
+
+export const getMoradorAtivoById= async (id: number) => {
+  const url = `${moradoresApi}?id=${id}&status=true`;
   const residente = await axios.get<ResidenteType[]>(url);
   if (residente.data && residente.data.length) {
     return residente.data[0];

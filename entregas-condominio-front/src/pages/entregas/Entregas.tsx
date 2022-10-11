@@ -1,4 +1,5 @@
 import CadastroEntregaModal from 'components/cadastroEntregaModal/CadastroEntregaModal';
+import CadastroRetiradaModal from 'components/cadastroRetiradaModal/CadastroRetiradaModal';
 import { LayoutContext } from 'contexts/layoutContext/LayoutContext';
 import moment from 'moment';
 import {
@@ -25,6 +26,7 @@ import { useCallback, useContext, useEffect, useMemo, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Paths } from 'routes/Routes';
 import { createEntrega, getAllEntregasFiltered } from 'services/api/entregas';
+import { createRetirada } from 'services/api/retiradas';
 import { EntregaRetiradaUsuarioType } from 'typings/typings';
 import { getUniqueKey } from 'utils/HTMLUtils';
 
@@ -93,12 +95,36 @@ export default function Entregas() {
                         label='Registrar retirada'
                         onClick={() => {
                           toggleOpened(entrega.id!, false);
-                          // const modalKey = getUniqueKey();
+                          const modalKey = getUniqueKey();
+                          openModal(CadastroRetiradaModal, {
+                            modalKey,
+                            preventMaskExit: true,
+                            mobileOnXS: true,
+                            idCasa: entrega.casaId,
+                            idEntrega: entrega.id!,
+                            onClose: () => closeModal(modalKey),
+                            onCancel: () => closeModal(modalKey),
+                            onConfirm: (retirada) => {
+                              return createRetirada(retirada)
+                                .then(() => {
+                                  closeModal(modalKey);
+                                  carregar();
+                                })
+                                .catch((err) => {
+                                  showToast({
+                                    label: err.message,
+                                    theme: ToastTypes.Error,
+                                    showStatusBar: true,
+                                    timeout: 3000,
+                                    pauseOnFocusLoss: true,
+                                    prevent: true,
+                                  });
+                                });
+                            },
+                          });
                           // openModal(DestructiveModal, {
                           //   modalKey,
                           //   title: 'Desativar Morador',
-                          //   preventMaskExit: true,
-                          //   mobileOnXS: true,
                           //   children:
                           //     'Deseja realmente remover este morador? Esta operação não pode ser desfeita.',
                           //   onClose: () => closeModal(modalKey),
