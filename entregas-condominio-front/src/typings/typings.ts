@@ -19,6 +19,10 @@ export type CasaType = {
   id: number;
 };
 
+export interface CasaComResidentesType extends CasaType {
+  residentes: ResidenteType[];
+}
+
 export type EntregaType = {
   id: number;
   dataHora: number;
@@ -43,6 +47,7 @@ export type RetiradaType = {
 export type ResidenteType = {
   id: number;
   nome: string;
+  rg: string;
   casaId: number;
   casasId: number;
   status: boolean;

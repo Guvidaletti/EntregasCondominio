@@ -57,6 +57,7 @@
     {
       "id": 1,
       "nome": "Morador Um",
+      "rg": "11111111111",
       "casaId": 1,
       "casasId": 1,
       "status": true
@@ -64,6 +65,7 @@
     {
       "id": 2,
       "nome": "Morador Desativado",
+      "rg": "11111111112",
       "casaId": 1,
       "casasId": 1,
       "status": false
@@ -71,6 +73,7 @@
     {
       "id": 3,
       "nome": "Morador Três",
+      "rg": "11111111113",
       "casaId": 1,
       "casasId": 1,
       "status": true

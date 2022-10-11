@@ -1,12 +1,27 @@
+import { LayoutContext } from 'contexts/layoutContext/LayoutContext';
 import {
   BreadCrumb,
   Col,
   Container,
+  DestructiveModal,
+  DropdownItem,
+  DropdownMenu,
+  IconButton,
+  OptionsIcon,
   Row,
+  TableWithOverflow,
+  ThreeDotsLoader,
   Title,
+  ToastTypes,
+  useDropOpened,
 } from 'plataforma-fundacao-componentes';
+import { ColumnObject } from 'plataforma-fundacao-componentes/dist/components/tableWithOverflow/TableWithOverflow';
+import { useCallback, useContext, useEffect, useMemo, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Paths } from 'routes/Routes';
+import { desativarMorador, getAllMoradores } from 'services/api/moradores';
+import { ResidenteType } from 'typings/typings';
+import { getUniqueKey } from 'utils/HTMLUtils';
 /**
  * Tela de Moradores
     - Incluir Novo Morador
@@ -24,6 +39,93 @@ import { Paths } from 'routes/Routes';
  * @returns 
  */
 export default function Moradores() {
+  const [moradores, setMoradores] = useState<ResidenteType[]>([]);
+  const [loading, setLoading] = useState(false);
+  const { showToast, openModal, closeModal } = useContext(LayoutContext);
+  const [dropOpened, toggleOpened] = useDropOpened<string>();
+
+  const carregar = useCallback(() => {
+    setLoading(true);
+    getAllMoradores()
+      .then((resp) => {
+        setMoradores(resp.data);
+      })
+      .catch(() => {
+        showToast({
+          label: 'Erro ao carregar moradores!',
+          theme: ToastTypes.Error,
+          showStatusBar: true,
+          timeout: 3000,
+          pauseOnFocusLoss: true,
+          prevent: true,
+        });
+      })
+      .finally(() => {
+        setLoading(false);
+      });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  useEffect(() => {
+    carregar();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  const columns = useMemo(() => {
+    return [
+      { key: 'nome', value: 'Nome', props: { align: 'center' } },
+      { key: 'rg', value: 'RG', props: { align: 'center' } },
+      { key: 'casaId', value: 'Casa', props: { align: 'center' } },
+      { key: 'status', value: 'Status', props: { align: 'center' } },
+      { key: 'actions', value: '', props: { align: 'center' } },
+    ];
+  }, []) as ColumnObject[];
+
+  const lines = useMemo(() => {
+    return moradores.map((m) => {
+      return {
+        ...m,
+        status: m.status ? 'Ativo' : 'Desativado',
+        actions: (
+          <DropdownMenu
+            opened={dropOpened?.includes(m.rg)}
+            setOpened={() => toggleOpened(m.rg, dropOpened !== m.rg)}
+            content={
+              <div>
+                <DropdownItem
+                  label='Desativar'
+                  onClick={() => {
+                    const modalKey = getUniqueKey();
+                    openModal(DestructiveModal, {
+                      modalKey,
+                      title: 'Desativar Morador',
+                      children:
+                        'Deseja realmente remover este morador? Esta operação não pode ser desfeita.',
+                      onClose: () => closeModal(modalKey),
+                      onCancel: () => closeModal(modalKey),
+                      onConfirm: () =>
+                        desativarMorador(m).finally(() => {
+                          carregar();
+                          closeModal(modalKey);
+                        }),
+                    });
+                  }}
+                />
+              </div>
+            }
+          >
+            <IconButton
+              disabled={!m.status}
+              icon={<OptionsIcon />}
+              onClick={() => toggleOpened(m.rg, dropOpened !== m.rg)}
+            />
+          </DropdownMenu>
+        ),
+      };
+    });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [dropOpened, moradores]);
+
   const navigate = useNavigate();
   return (
     <Container position='absolute' verticalPadding>
@@ -42,7 +144,21 @@ export default function Moradores() {
           <Title>Moradores</Title>
         </Col>
       </Row>
-      <Row></Row>
+      <Row>
+        <TableWithOverflow
+          lines={lines}
+          columns={columns}
+          showTopNavigator={false}
+          noResultMessage='Moradores não encontrados'
+        />
+      </Row>
+      {loading ? (
+        <Row>
+          <Col centralized>
+            <ThreeDotsLoader />
+          </Col>
+        </Row>
+      ) : undefined}
     </Container>
   );
 }
