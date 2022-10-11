@@ -1,7 +1,6 @@
 import BoxInfo from 'components/boxInfo/BoxInfo';
 import {
   BreadCrumb,
-  CardTypes,
   Col,
   Container,
   Row,
@@ -83,10 +82,7 @@ export default function Dashboard() {
           />
         </Col>
         <Col cols={[12, 12, 4, 4, 4]}>
-          <BoxInfo
-            num={qtdNaoRetiradas}
-            label='Entrega(s) não retiradas'
-          />
+          <BoxInfo num={qtdNaoRetiradas} label='Entrega(s) não retiradas' />
         </Col>
       </Row>
     </Container>
