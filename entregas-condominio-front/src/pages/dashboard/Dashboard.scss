@@ -1,0 +1,16 @@
+@import '../../assets/styles/constants';
+
+$rootClassName: dashboard-page;
+
+:export {
+  rootClassName: $rootClassName;
+}
+
+.#{$rootClassName}-table-wrapper {
+  width: 100%;
+  table, th, td {
+    border: 1px solid $primary;
+    text-align: center;
+    padding: 4px;
+  }
+}
