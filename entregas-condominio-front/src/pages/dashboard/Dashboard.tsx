@@ -167,7 +167,6 @@ export default function Dashboard() {
             onClick={() => {
               setLoadingRelatorio(true);
               getAllEntregasFiltered({}).then(({ data }) => {
-                console.log(data);
                 const entregas = data.filter(
                   (e) =>
                     e.dataHora >=
@@ -175,7 +174,6 @@ export default function Dashboard() {
                     e.dataHora <=
                       moment(dataFim, 'DD/MM/YYYY').toDate().getTime()
                 );
-                console.log(entregas);
                 const el = (
                   <div className={`${rootClassName}-table-wrapper`}>
                     <table>
