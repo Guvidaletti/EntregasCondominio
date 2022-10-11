@@ -122,19 +122,6 @@ export default function Entregas() {
                                 });
                             },
                           });
-                          // openModal(DestructiveModal, {
-                          //   modalKey,
-                          //   title: 'Desativar Morador',
-                          //   children:
-                          //     'Deseja realmente remover este morador? Esta operação não pode ser desfeita.',
-                          //   onClose: () => closeModal(modalKey),
-                          //   onCancel: () => closeModal(modalKey),
-                          //   onConfirm: () =>
-                          //     desativarMorador(m).finally(() => {
-                          //       carregar();
-                          //       closeModal(modalKey);
-                          //     }),
-                          // });
                         }}
                       />
                     </div>
@@ -152,7 +139,8 @@ export default function Entregas() {
             };
           })
       : [];
-  }, [entregas, descricao, retirada, dropOpened, toggleOpened]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [entregas, descricao, retirada, dropOpened]);
 
   const columns = useMemo(() => {
     return [
