@@ -28,7 +28,7 @@ export const createMorador = async (morador: ResidenteType) => {
     throw new Error('RG já cadastrado!');
   }
   const url = `${moradoresApi}`;
-  return await axios.post<void>(url, morador);
+  return await axios.post<ResidenteType>(url, morador);
 };
 
 export const getMoradorByRG = async (rg: string) => {
@@ -40,7 +40,7 @@ export const getMoradorByRG = async (rg: string) => {
   return null;
 };
 
-export const getMoradorAtivoById= async (id: number) => {
+export const getMoradorAtivoById = async (id: number) => {
   const url = `${moradoresApi}?id=${id}&status=true`;
   const residente = await axios.get<ResidenteType[]>(url);
   if (residente.data && residente.data.length) {
@@ -51,5 +51,5 @@ export const getMoradorAtivoById= async (id: number) => {
 
 export const desativarMorador = async (morador: ResidenteType) => {
   const url = `${moradoresApi}/${morador.id}`;
-  return axios.put(url, { ...morador, status: false });
+  return axios.put<ResidenteType>(url, { ...morador, status: false });
 };

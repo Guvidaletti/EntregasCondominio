@@ -1,7 +1,11 @@
 import moment from 'moment';
-import { getCasaByIdComMoradoresAtivos } from 'services/api/casas';
+import { getAllCasas, getCasaByIdComMoradoresAtivos } from 'services/api/casas';
 import { createEntrega, getAllEntregasFiltered } from 'services/api/entregas';
-import { getAllMoradores } from 'services/api/moradores';
+import {
+  createMorador,
+  desativarMorador,
+  getAllMoradores,
+} from 'services/api/moradores';
 import {
   createUsuario,
   deleteUsuarioByNome,
@@ -35,12 +39,13 @@ describe('IntegrationTests', () => {
   it('FluxoCadastroLogin', async () => {
     const getByNome = await getUsuarioByNome(usuario.nome);
     if (getByNome.data.length) {
-      usuario = getByNome.data[0]
+      usuario = getByNome.data[0];
     }
-    
+
     const createOrGet = usuario.id
       ? await getUsuarioByNome(usuario.nome)
       : await createUsuario(usuario);
+
     expect(createOrGet.status).toBe(!usuario.id ? 201 : 200);
 
     const req = await loginUsuario(usuario);
@@ -83,5 +88,24 @@ describe('IntegrationTests', () => {
   it('Moradores', async () => {
     const retorno = await getAllMoradores();
     expect(retorno.data.length).toBeGreaterThan(0);
+  });
+
+  it('PodeIncluirMoradores', async () => {
+    const casas = await getAllCasas();
+    const casaExemplo = casas.data.find(
+      (casa) => casa.residentes.filter((r) => r.status).length < 8
+    );
+    const retorno = await createMorador({
+      casaId: casaExemplo?.id!,
+      casasId: casaExemplo?.id!,
+      nome: 'Teste',
+      rg: ((1 + Math.random()) * 1000000).toFixed(0),
+      status: true,
+    });
+
+    expect(retorno.status).toBe(201);
+
+    const desabilitar = await desativarMorador(retorno.data);
+    expect(desabilitar.status).toBe(200);
   });
 });

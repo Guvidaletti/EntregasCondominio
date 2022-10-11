@@ -23,6 +23,6 @@ export const createCasa = async () => {
 };
 
 export const getAllCasas = async () => {
-  const url = casasApi;
-  return await axios.get<CasaType[]>(url);
+  const url = `${casasApi}?_embed=residentes`;
+  return await axios.get<CasaComResidentesType[]>(url);
 };
