@@ -17,6 +17,12 @@
       "iniciais": "ET",
       "tipo": "SEGURANCA",
       "id": 3
+    },
+    {
+      "nome": "Usuario Teste",
+      "iniciais": "UT",
+      "tipo": "SEGURANCA",
+      "id": 4
     }
   ],
   "casas": [
@@ -111,6 +117,24 @@
       "usuarioId": 3,
       "usuariosId": 3,
       "id": 8
+    },
+    {
+      "casaId": 1,
+      "casasId": 1,
+      "dataHora": 1665524590748,
+      "descricao": "descricao",
+      "usuarioId": 1,
+      "usuariosId": 1,
+      "id": 10
+    },
+    {
+      "casaId": 1,
+      "casasId": 1,
+      "dataHora": 1665524985591,
+      "descricao": "descricao",
+      "usuarioId": 4,
+      "usuariosId": 4,
+      "id": 11
     }
   ],
   "retiradas": [
