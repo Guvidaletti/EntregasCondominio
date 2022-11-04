@@ -46,6 +46,7 @@ export default function Login() {
       <Row centralized>
         <Col cols={cols}>
           <Input
+            id='login-nome'
             label='Nome'
             placeholder='Digite o nome...'
             value={nome}
@@ -66,6 +67,7 @@ export default function Login() {
       <Row centralized>
         <Col cols={cols}>
           <Input
+            id='login-iniciais'
             label='Iniciais'
             value={iniciais}
             onChange={(evt) => setIniciais(evt.target.value)}
@@ -76,6 +78,7 @@ export default function Login() {
       <Row centralized>
         <Col cols={cols}>
           <Select
+            id='login-tipo-usuario'
             label='Tipo de Usuário'
             placeholder='Selecione...'
             value={tipo}
@@ -90,6 +93,7 @@ export default function Login() {
       <Row centralized>
         <Col cols={actionCols}>
           <Button
+            id='login-entrar'
             w100
             theme={ButtonThemes.Primary}
             onClick={() => {
@@ -113,6 +117,7 @@ export default function Login() {
       <Row centralized>
         <Col cols={actionCols}>
           <Button
+            id='login-cadastro'
             theme={ButtonThemes.Default}
             onClick={() => {
               const mk = getUniqueKey();

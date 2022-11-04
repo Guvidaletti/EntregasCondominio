@@ -1,0 +1,19 @@
+{
+  "name": "entregas-condominio-automacao",
+  "version": "1.0.0",
+  "description": "Automação",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha index.test.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "assert": "^2.0.0",
+    "chromedriver": "^107.0.2"
+  },
+  "devDependencies": {
+    "mocha": "^10.1.0",
+    "selenium-webdriver": "^4.5.0"
+  }
+}

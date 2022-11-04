@@ -9,6 +9,7 @@ import {
   Header,
   HeaderType,
   IconButton,
+  UserIcon,
 } from 'plataforma-fundacao-componentes';
 import { ReactNode, useContext, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
@@ -54,7 +55,9 @@ export default function Layout({ children }: { children: ReactNode }) {
                 setOpened={setOpened}
               >
                 <Button
+                  id='header-usuario-button'
                   theme={ButtonThemes.HeaderUserSecondary}
+                  leftIcon={<UserIcon />}
                   onClick={() => setOpened(!opened)}
                 >
                   <b>{usuario.iniciais}</b>

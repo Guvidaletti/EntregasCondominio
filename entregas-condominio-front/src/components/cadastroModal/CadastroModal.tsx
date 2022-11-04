@@ -28,12 +28,14 @@ export default function CadastroModal(props: CadastroModalProps) {
       title='Cadastro de usuário'
       footer={[
         {
+          id: 'modal-cadastro-cancelar',
           theme: ButtonThemes.Secondary,
           children: 'Cancelar',
           leftIcon: <TimesCircleIcon />,
           onClick: props.onCancel,
         },
         {
+          id: 'modal-cadastro-confirmar',
           children: 'Confirmar',
           leftIcon: <CheckCircleIcon />,
           onClick: () => {
@@ -56,6 +58,7 @@ export default function CadastroModal(props: CadastroModalProps) {
       <Row centralized>
         <Col>
           <Input
+            id='modal-cadastro-nome'
             label='Nome'
             placeholder='Digite o nome...'
             value={nome}
@@ -76,6 +79,7 @@ export default function CadastroModal(props: CadastroModalProps) {
       <Row centralized>
         <Col>
           <Input
+            id='modal-cadastro-iniciais'
             label='Iniciais'
             value={iniciais}
             onChange={(evt) => setIniciais(evt.target.value)}
@@ -86,6 +90,7 @@ export default function CadastroModal(props: CadastroModalProps) {
       <Row centralized>
         <Col>
           <Select
+            id='modal-cadastro-tipo-usuario'
             label='Tipo de Usuário'
             placeholder='Selecione...'
             value={tipo}
