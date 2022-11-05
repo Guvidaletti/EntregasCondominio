@@ -177,6 +177,7 @@ export default function Entregas() {
       <Row>
         <Col buttonActionsCol end>
           <Button
+            id='entregas-cadastro-button'
             leftIcon={<CheckCircleIcon />}
             onClick={() => {
               const modalKey = getUniqueKey();

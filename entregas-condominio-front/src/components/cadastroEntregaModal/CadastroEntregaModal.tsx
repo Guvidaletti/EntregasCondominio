@@ -49,12 +49,14 @@ export default function CadastroEntregaModal(props: CadastroEntregaModalProps) {
       compenseColPaddingContent
       footer={[
         {
+          id: 'cadastro-entrega-cancelar',
           theme: ButtonThemes.Secondary,
           children: 'Cancelar',
           leftIcon: <TimesCircleIcon />,
           onClick: props.onCancel,
         },
         {
+          id: 'cadastro-entrega-confirmar',
           children: 'Confirmar',
           leftIcon: <CheckCircleIcon />,
           onClick: () => {
@@ -84,6 +86,7 @@ export default function CadastroEntregaModal(props: CadastroEntregaModalProps) {
       <Row>
         <Col>
           <Input
+            id='cadastro-entrega-descricao'
             placeholder='Digite a descrição...'
             label='Descrição'
             value={descricao}
@@ -94,6 +97,7 @@ export default function CadastroEntregaModal(props: CadastroEntregaModalProps) {
       <Row>
         <Col>
           <Select
+            id='cadastro-entrega-casa'
             label='Casa'
             placeholder='Selecione a casa...'
             options={casasOptions}

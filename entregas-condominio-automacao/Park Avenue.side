@@ -206,14 +206,114 @@
       ],
       "value": ""
     }]
+  }, {
+    "id": "8086e34a-ce7c-4693-9f11-39c568e99dbc",
+    "name": "Registrar Entrega",
+    "commands": [{
+      "id": "20d0a8a8-8950-48f8-b649-0105c190ad9c",
+      "comment": "",
+      "command": "open",
+      "target": "http://localhost:3000/home",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "5b22a267-92b0-4695-9b3f-1c49f25f4635",
+      "comment": "",
+      "command": "click",
+      "target": "css=#entregas-cadastro-button",
+      "targets": [
+        ["css=#entregas-cadastro-button > .component-button-label", "css:finder"],
+        ["xpath=//button[@id='entregas-cadastro-button']/div[2]", "xpath:idRelative"],
+        ["xpath=//div[3]/div/button/div[2]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "93b32caf-f547-4a65-9c64-f4008d03e318",
+      "comment": "",
+      "command": "click",
+      "target": "id=cadastro-entrega-descricao-input",
+      "targets": [
+        ["id=cadastro-entrega-descricao-input", "id"],
+        ["css=#cadastro-entrega-descricao-input", "css:finder"],
+        ["xpath=//input[@id='cadastro-entrega-descricao-input']", "xpath:attributes"],
+        ["xpath=//div[@id='cadastro-entrega-descricao']/div[2]/input", "xpath:idRelative"],
+        ["xpath=//div[2]/div/div/div/div[2]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "3de21d06-3bf8-4588-82eb-a9c8b8782560",
+      "comment": "",
+      "command": "type",
+      "target": "id=cadastro-entrega-descricao-input",
+      "targets": [
+        ["id=cadastro-entrega-descricao-input", "id"],
+        ["css=#cadastro-entrega-descricao-input", "css:finder"],
+        ["xpath=//input[@id='cadastro-entrega-descricao-input']", "xpath:attributes"],
+        ["xpath=//div[@id='cadastro-entrega-descricao']/div[2]/input", "xpath:idRelative"],
+        ["xpath=//div[2]/div/div/div/div[2]/input", "xpath:position"]
+      ],
+      "value": "Entrega Misteriosa"
+    }, {
+      "id": "47629fb3-c5a8-464b-a02f-48af87ac7682",
+      "comment": "",
+      "command": "click",
+      "target": "css=#cadastro-entrega-casa path",
+      "targets": [
+        ["css=#cadastro-entrega-casa path", "css:finder"]
+      ],
+      "value": ""
+    }, {
+      "id": "865e4c01-262d-458e-9e59-1ec5082bfc93",
+      "comment": "",
+      "command": "click",
+      "target": "css=.component-select-single-option:nth-child(1)",
+      "targets": [
+        ["css=.component-select-single-option:nth-child(1)", "css:finder"],
+        ["xpath=//div[@id='_79']/div/div", "xpath:idRelative"],
+        ["xpath=//div[2]/div[2]/div/div/div[2]/div/div", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "f22d8f35-ee82-4a1b-9fa8-7179b57ca6fe",
+      "comment": "",
+      "command": "click",
+      "target": "css=#cadastro-entrega-confirmar > .component-button-label",
+      "targets": [
+        ["css=#cadastro-entrega-confirmar > .component-button-label", "css:finder"],
+        ["xpath=//button[@id='cadastro-entrega-confirmar']/div[2]", "xpath:idRelative"],
+        ["xpath=//button[2]/div[2]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "5b64b2a4-0f31-48cd-b2f6-5acc26c24814",
+      "comment": "",
+      "command": "click",
+      "target": "id=home-entregas",
+      "targets": [
+        ["id=home-entregas", "id"],
+        ["css=#home-entregas", "css:finder"],
+        ["xpath=//button[@id='home-entregas']", "xpath:attributes"],
+        ["xpath=//div[@id='root']/div/div[2]/div/div/div[3]/div/button", "xpath:idRelative"],
+        ["xpath=//div[3]/div/button", "xpath:position"],
+        ["xpath=//button[contains(.,'Entregas')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }]
   }],
   "suites": [{
     "id": "bb0d11d6-e6de-4b74-8b68-c3ee6a65a08a",
-    "name": "Default Suite",
+    "name": "Depois do Cadastro",
     "persistSession": false,
     "parallel": false,
     "timeout": 300,
-    "tests": ["4ef15b1a-d320-4348-ba4c-cfb952d05338", "12b045b3-586d-4e19-b415-d11ee834d9ba"]
+    "tests": ["12b045b3-586d-4e19-b415-d11ee834d9ba", "8086e34a-ce7c-4693-9f11-39c568e99dbc"]
+  }, {
+    "id": "2cee9dbe-f766-4b86-b740-b40379ea27b9",
+    "name": "Antes do Cadastro",
+    "persistSession": false,
+    "parallel": false,
+    "timeout": 300,
+    "tests": ["4ef15b1a-d320-4348-ba4c-cfb952d05338"]
   }],
   "urls": ["http://localhost:3000/"],
   "plugins": []

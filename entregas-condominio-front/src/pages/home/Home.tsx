@@ -71,6 +71,7 @@ export default function Home() {
       <Row>
         <Col cols={cols}>
           <BigBlockButton
+            id='home-entregas'
             icon={<CalendarCheckIcon />}
             onClick={() => {
               navigate(Paths.entregas);
@@ -80,6 +81,7 @@ export default function Home() {
         </Col>
         <Col cols={cols}>
           <BigBlockButton
+            id='home-moradores'
             icon={<HomeIcon />}
             onClick={() => {
               navigate(Paths.moradores);
@@ -89,6 +91,7 @@ export default function Home() {
         </Col>
         <Col cols={cols}>
           <BigBlockButton
+            id='home-dashboard'
             icon={<PieChartIcon />}
             onClick={() => {
               navigate(Paths.dashboard);

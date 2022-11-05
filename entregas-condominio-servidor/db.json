@@ -11,12 +11,6 @@
       "tipo": "PORTEIRO",
       "nome": "Ramiro Nascimento",
       "iniciais": "RN"
-    },
-    {
-      "nome": "Segurança Teste",
-      "iniciais": "ST",
-      "tipo": "SEGURANCA",
-      "id": 3
     }
   ],
   "casas": [
