@@ -2,6 +2,9 @@
 const { Builder, By } = require("selenium-webdriver");
 const assert = require("assert");
 const wait = (t = 1000) => new Promise((r) => setTimeout(r, t));
+const now = (d = new Date()) =>
+  `${d.getHours()}:${d.getMinutes()}:${d.getSeconds()}`;
+
 describe("Primeira execução", function () {
   this.timeout(30000);
   let driver;
@@ -86,7 +89,7 @@ describe("Depois do cadastro", function () {
     }, 200);
   });
 
-  // it("Login do Segurança", login);
+  const nomeEntrega = "Misteriosa_" + now();
 
   it("Registrar Entrega", async function () {
     await driver.findElement(By.id("home-entregas")).click();
@@ -95,12 +98,43 @@ describe("Depois do cadastro", function () {
     await driver.findElement(By.id("cadastro-entrega-descricao-input")).click();
     await driver
       .findElement(By.id("cadastro-entrega-descricao-input"))
-      .sendKeys("Entrega Misteriosa");
+      .sendKeys(nomeEntrega);
     await driver.findElement(By.css("#cadastro-entrega-casa")).click();
     await wait(200);
     await driver
       .findElement(By.css(".component-select-single-option:nth-child(1)"))
       .click();
     await driver.findElement(By.id("cadastro-entrega-confirmar")).click();
+    {
+      await wait(600);
+      const elements = await driver.findElements(
+        By.xpath(`//*[text()='${nomeEntrega}']`)
+      );
+      assert(elements.length);
+    }
+  });
+
+  it("Filtrar Entrega", async function () {
+    // await driver.get("http://localhost:3000/home");
+    await driver.findElement(By.id("home-entregas")).click();
+    // {
+    //   const element = await driver.findElement(By.id("home-entregas"));
+    //   await driver.actions({ bridge: true }).moveToElement(element).perform();
+    // }
+    await driver.findElement(By.id("entregas-filtro-descricao-input")).click();
+    await driver
+      .findElement(By.id("entregas-filtro-descricao-input"))
+      .sendKeys(nomeEntrega.substring(0, 4));
+    await driver.findElement(By.id("entregas-filtro-retirada-input")).click();
+    await driver
+      .findElement(By.css(".component-select-single-option:nth-child(3)"))
+      .click();
+    {
+      await wait(600);
+      const elements = await driver.findElements(
+        By.xpath(`//*[text()='${nomeEntrega}']`)
+      );
+      assert(elements.length);
+    }
   });
 });

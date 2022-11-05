@@ -213,6 +213,7 @@ export default function Entregas() {
       <Row>
         <Col cols={[12, 12, 6, 6, 6]}>
           <Input
+            id='entregas-filtro-descricao'
             label='Descrição'
             placeholder='Digite a descrição...'
             value={descricao}
@@ -221,6 +222,7 @@ export default function Entregas() {
         </Col>
         <Col cols={[12, 12, 6, 6, 6]}>
           <Select
+            id='entregas-filtro-retirada'
             label='Retirada'
             placeholder='Selecione...'
             value={retirada}

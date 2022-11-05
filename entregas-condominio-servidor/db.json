@@ -11,6 +11,12 @@
       "tipo": "PORTEIRO",
       "nome": "Ramiro Nascimento",
       "iniciais": "RN"
+    },
+    {
+      "nome": "Segurança Teste",
+      "iniciais": "ST",
+      "tipo": "SEGURANCA",
+      "id": 3
     }
   ],
   "casas": [
@@ -51,6 +57,15 @@
       "casasId": 1,
       "usuarioId": 1,
       "usuariosId": 1
+    },
+    {
+      "descricao": "Misteriosa_14:22:14",
+      "dataHora": 1667668940934,
+      "usuarioId": 3,
+      "usuariosId": 3,
+      "casaId": 1,
+      "casasId": 1,
+      "id": 3
     }
   ],
   "retiradas": [
