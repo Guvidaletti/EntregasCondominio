@@ -124,7 +124,7 @@ export default function Moradores() {
             }
           >
             <IconButton
-              id={`opcao-${m.id}`}
+              id={`opcao-${m.rg}`}
               disabled={!m.status}
               icon={<OptionsIcon />}
               onClick={() => toggleOpened(m.rg, dropOpened !== m.rg)}
