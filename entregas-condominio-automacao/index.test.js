@@ -5,6 +5,8 @@ const wait = (t = 1000) => new Promise((r) => setTimeout(r, t));
 const now = (d = new Date()) =>
   `${d.getHours()}:${d.getMinutes()}:${d.getSeconds()}`;
 
+const username = 'Segurança Teste';
+
 describe('Primeira execução', function () {
   this.timeout(30000);
   let driver;
@@ -27,7 +29,7 @@ describe('Primeira execução', function () {
     await driver.findElement(By.id('modal-cadastro-nome-input')).click();
     await driver
       .findElement(By.id('modal-cadastro-nome-input'))
-      .sendKeys('Segurança Teste');
+      .sendKeys(username);
     await driver
       .findElement(By.id('modal-cadastro-tipo-usuario-input'))
       .click();
@@ -45,7 +47,13 @@ describe('Primeira execução', function () {
       const elements = await driver.findElements(
         By.css('#header-usuario-button')
       );
-      assert(elements && elements.length);
+      const elementsGoneWrong = await driver.findElements(
+        By.xpath("//*[text()='Usuário já existe']")
+      );
+      assert(
+        (elements && elements.length) ||
+          (elementsGoneWrong && elementsGoneWrong.length)
+      );
     }
   });
 });
@@ -58,9 +66,7 @@ describe('Depois do cadastro', function () {
   async function login() {
     await driver.get('http://localhost:3000/');
     await driver.findElement(By.id('login-nome-input')).click();
-    await driver
-      .findElement(By.id('login-nome-input'))
-      .sendKeys('Segurança Teste');
+    await driver.findElement(By.id('login-nome-input')).sendKeys(username);
     await driver.findElement(By.id('login-entrar')).click();
     await driver.findElement(By.id('login-tipo-usuario-input')).click();
     await driver

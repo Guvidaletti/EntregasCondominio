@@ -4,7 +4,8 @@
   "description": "Automação",
   "main": "index.js",
   "scripts": {
-    "test": "mocha index.test.js"
+    "test": "mocha index.test.js",
+    "reset-db": "cp ./../entregas-condominio-servidor/db.json.bak ./../entregas-condominio-servidor/db.json"
   },
   "author": "",
   "license": "ISC",

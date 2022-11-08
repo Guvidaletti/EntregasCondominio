@@ -130,9 +130,9 @@ export default function Login() {
                     .then(() => {
                       login(usuario);
                     })
-                    .catch(() => {
+                    .catch((err) => {
                       showToast({
-                        label: 'Erro ao fazer o cadastro!',
+                        label: err.message || 'Erro ao fazer o cadastro!',
                         theme: ToastTypes.Error,
                         showStatusBar: true,
                         timeout: 3000,
