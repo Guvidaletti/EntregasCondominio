@@ -76,7 +76,7 @@ export default function Entregas() {
                 (retirada === 'NAO' && !entrega.retiradas.length))
             );
           })
-          .map((entrega) => {
+          .map((entrega, i) => {
             return {
               ...entrega,
               dataEntrega: moment(entrega.dataHora).format(
@@ -92,6 +92,7 @@ export default function Entregas() {
                   content={
                     <div>
                       <DropdownItem
+                        id={`registrar-retirada-${i}`}
                         label='Registrar retirada'
                         onClick={() => {
                           toggleOpened(entrega.id!, false);
@@ -128,6 +129,7 @@ export default function Entregas() {
                   }
                 >
                   <IconButton
+                    id={`entrega-opcoes-${i}`}
                     disabled={Boolean(entrega.retiradas.length)}
                     icon={<OptionsIcon />}
                     onClick={() =>

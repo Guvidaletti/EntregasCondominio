@@ -89,7 +89,7 @@ export default function Moradores() {
   }, []) as ColumnObject[];
 
   const lines = useMemo(() => {
-    return moradores.map((m) => {
+    return moradores.map((m, i) => {
       return {
         ...m,
         status: m.status ? 'Ativo' : 'Desativado',
@@ -124,6 +124,7 @@ export default function Moradores() {
             }
           >
             <IconButton
+              id={`opcao-${m.id}`}
               disabled={!m.status}
               icon={<OptionsIcon />}
               onClick={() => toggleOpened(m.rg, dropOpened !== m.rg)}
@@ -156,6 +157,7 @@ export default function Moradores() {
       <Row>
         <Col buttonActionsCol end>
           <Button
+            id='moradores-adicionar'
             leftIcon={<AddCircleIcon />}
             onClick={() => {
               const modalKey = getUniqueKey();

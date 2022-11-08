@@ -47,12 +47,14 @@ export default function CadastroMoradorModal(props: CadastroMoradorProps) {
       title='Cadastro de morador'
       footer={[
         {
+          id: 'cadastro-morador-cancelar',
           theme: ButtonThemes.Secondary,
           children: 'Cancelar',
           leftIcon: <TimesCircleIcon />,
           onClick: props.onCancel,
         },
         {
+          id: 'cadastro-morador-confirmar',
           children: 'Confirmar',
           leftIcon: <CheckCircleIcon />,
           onClick: () => {
@@ -81,6 +83,7 @@ export default function CadastroMoradorModal(props: CadastroMoradorProps) {
       <Row>
         <Col>
           <Input
+            id='cadastro-morador-nome'
             label='Nome'
             placeholder='Digite o nome...'
             value={nome}
@@ -91,6 +94,7 @@ export default function CadastroMoradorModal(props: CadastroMoradorProps) {
       <Row>
         <Col>
           <Input
+            id='cadastro-morador-rg'
             label='RG'
             placeholder='Digite o RG (somente números)...'
             value={rg}
@@ -101,6 +105,7 @@ export default function CadastroMoradorModal(props: CadastroMoradorProps) {
       <Row>
         <Col>
           <Select
+            id='cadastro-morador-casa'
             label='Casa'
             placeholder='Selecione a casa...'
             options={casasOptions}

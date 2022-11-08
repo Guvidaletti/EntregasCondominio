@@ -115,16 +115,11 @@ describe("Depois do cadastro", function () {
   });
 
   it("Filtrar Entrega", async function () {
-    // await driver.get("http://localhost:3000/home");
     await driver.findElement(By.id("home-entregas")).click();
-    // {
-    //   const element = await driver.findElement(By.id("home-entregas"));
-    //   await driver.actions({ bridge: true }).moveToElement(element).perform();
-    // }
     await driver.findElement(By.id("entregas-filtro-descricao-input")).click();
     await driver
       .findElement(By.id("entregas-filtro-descricao-input"))
-      .sendKeys(nomeEntrega.substring(0, 4));
+      .sendKeys(nomeEntrega);
     await driver.findElement(By.id("entregas-filtro-retirada-input")).click();
     await driver
       .findElement(By.css(".component-select-single-option:nth-child(3)"))
@@ -135,6 +130,53 @@ describe("Depois do cadastro", function () {
         By.xpath(`//*[text()='${nomeEntrega}']`)
       );
       assert(elements.length);
+    }
+  });
+
+  const rgMorador = Math.ceil(Math.random() * 100000);
+  const nomeMorador = `Morador_${rgMorador}`;
+
+  it("Cadastrar Morador", async function () {
+    await driver.findElement(By.css("#home-moradores")).click();
+    await driver.findElement(By.css("#moradores-adicionar")).click();
+    await driver.findElement(By.id("cadastro-morador-nome-input")).click();
+    await driver
+      .findElement(By.id("cadastro-morador-nome-input"))
+      .sendKeys(nomeMorador);
+    await driver.findElement(By.id("cadastro-morador-rg-input")).click();
+    await driver
+      .findElement(By.id("cadastro-morador-rg-input"))
+      .sendKeys(rgMorador);
+    await driver.findElement(By.id("cadastro-morador-casa-input")).click();
+    await driver
+      .findElement(By.css(".component-select-single-option:nth-child(1)"))
+      .click();
+    await driver.findElement(By.css("#cadastro-morador-confirmar")).click();
+    {
+      await wait(800);
+      const elements = await driver.findElements(
+        By.xpath(`//*[text()='${rgMorador}']`)
+      );
+      assert(elements.length);
+    }
+  });
+
+  it("Registrar Retirada", async function () {
+    await driver.findElement(By.id("home-entregas")).click();
+    await driver.findElement(By.id("entregas-filtro-descricao-input")).click();
+    await driver
+      .findElement(By.id("entregas-filtro-descricao-input"))
+      .sendKeys(nomeEntrega);
+    await driver.findElement(By.id("entrega-opcoes-0")).click();
+    await wait(200);
+    await driver.findElement(By.id("registrar-retirada-0")).click();
+    await wait(200);
+    await driver.findElement(By.id("cadastro-retirada-morador-input")).click();
+    await driver.findElement(By.xpath(`//*[text()='${nomeMorador}']`)).click();
+    await wait(150);
+    await driver.findElement(By.id("cadastro-retirada-confirmar")).click();
+    {
+      // TODO: Assert
     }
   });
 });

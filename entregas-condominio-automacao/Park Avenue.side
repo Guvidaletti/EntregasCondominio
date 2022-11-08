@@ -217,6 +217,20 @@
       "targets": [],
       "value": ""
     }, {
+      "id": "5b64b2a4-0f31-48cd-b2f6-5acc26c24814",
+      "comment": "",
+      "command": "click",
+      "target": "id=home-entregas",
+      "targets": [
+        ["id=home-entregas", "id"],
+        ["css=#home-entregas", "css:finder"],
+        ["xpath=//button[@id='home-entregas']", "xpath:attributes"],
+        ["xpath=//div[@id='root']/div/div[2]/div/div/div[3]/div/button", "xpath:idRelative"],
+        ["xpath=//div[3]/div/button", "xpath:position"],
+        ["xpath=//button[contains(.,'Entregas')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
       "id": "5b22a267-92b0-4695-9b3f-1c49f25f4635",
       "comment": "",
       "command": "click",
@@ -285,7 +299,49 @@
       ],
       "value": ""
     }, {
-      "id": "5b64b2a4-0f31-48cd-b2f6-5acc26c24814",
+      "id": "9e5bb742-f8d6-46cd-8251-14d27f400187",
+      "comment": "",
+      "command": "verifyElementPresent",
+      "target": "css=tr:nth-child(3) > .descricao-cell",
+      "targets": [
+        ["css=tr:nth-child(3) > .descricao-cell", "css:finder"],
+        ["xpath=//div[@id='root']/div/div[2]/div/div/div[5]/div/div/div/div/table/tbody/tr[3]/td[3]", "xpath:idRelative"],
+        ["xpath=//tr[3]/td[3]", "xpath:position"],
+        ["xpath=//td[contains(.,'Entrega Misteriosa')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "1fda15fc-e0a6-4e57-b163-b7591e418d9a",
+      "comment": "",
+      "command": "assertElementPresent",
+      "target": "css=tr:nth-child(3) > .descricao-cell",
+      "targets": [
+        ["css=tr:nth-child(3) > .descricao-cell", "css:finder"],
+        ["xpath=//div[@id='root']/div/div[2]/div/div/div[5]/div/div/div/div/table/tbody/tr[3]/td[3]", "xpath:idRelative"],
+        ["xpath=//tr[3]/td[3]", "xpath:position"],
+        ["xpath=//td[contains(.,'Entrega Misteriosa')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }]
+  }, {
+    "id": "c21cd038-1826-402c-b448-5d4bab893f61",
+    "name": "Filtrar Retirada",
+    "commands": [{
+      "id": "4f8a7208-4228-4bac-b3d3-c1f210f09119",
+      "comment": "",
+      "command": "open",
+      "target": "http://localhost:3000/home",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "ec234211-3c56-4c40-83c5-6e25392084ce",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1335x862",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "9d103c5b-218d-4dca-ae43-5569dfa6fb78",
       "comment": "",
       "command": "click",
       "target": "id=home-entregas",
@@ -296,6 +352,82 @@
         ["xpath=//div[@id='root']/div/div[2]/div/div/div[3]/div/button", "xpath:idRelative"],
         ["xpath=//div[3]/div/button", "xpath:position"],
         ["xpath=//button[contains(.,'Entregas')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "3343bd50-6e1d-43ae-a953-6594df1bbeaf",
+      "comment": "",
+      "command": "mouseOver",
+      "target": "id=home-entregas",
+      "targets": [
+        ["id=home-entregas", "id"],
+        ["css=#home-entregas", "css:finder"],
+        ["xpath=//button[@id='home-entregas']", "xpath:attributes"],
+        ["xpath=//div[@id='root']/div/div[2]/div/div/div[3]/div/button", "xpath:idRelative"],
+        ["xpath=//div[3]/div/button", "xpath:position"],
+        ["xpath=//button[contains(.,'Entregas')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "32d87e68-0e41-4bb2-8850-e58a257c061f",
+      "comment": "",
+      "command": "click",
+      "target": "id=entregas-filtro-descricao-input",
+      "targets": [
+        ["id=entregas-filtro-descricao-input", "id"],
+        ["css=#entregas-filtro-descricao-input", "css:finder"],
+        ["xpath=//input[@id='entregas-filtro-descricao-input']", "xpath:attributes"],
+        ["xpath=//div[@id='entregas-filtro-descricao']/div[2]/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "9eed14e6-b911-49ec-b3d7-6c2d3640061c",
+      "comment": "",
+      "command": "type",
+      "target": "id=entregas-filtro-descricao-input",
+      "targets": [
+        ["id=entregas-filtro-descricao-input", "id"],
+        ["css=#entregas-filtro-descricao-input", "css:finder"],
+        ["xpath=//input[@id='entregas-filtro-descricao-input']", "xpath:attributes"],
+        ["xpath=//div[@id='entregas-filtro-descricao']/div[2]/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "Mi"
+    }, {
+      "id": "6e2aaef9-31d6-485f-a33e-a7891ce36ca1",
+      "comment": "",
+      "command": "click",
+      "target": "id=entregas-filtro-retirada-input",
+      "targets": [
+        ["id=entregas-filtro-retirada-input", "id"],
+        ["css=#entregas-filtro-retirada-input", "css:finder"],
+        ["xpath=//input[@id='entregas-filtro-retirada-input']", "xpath:attributes"],
+        ["xpath=//div[@id='entregas-filtro-retirada']/div[2]/input", "xpath:idRelative"],
+        ["xpath=//div[2]/div/div/div[2]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "e2580dbf-355a-49a3-bf13-b41639f07ad5",
+      "comment": "",
+      "command": "click",
+      "target": "css=.component-select-single-option:nth-child(3)",
+      "targets": [
+        ["css=.component-select-single-option:nth-child(3)", "css:finder"],
+        ["xpath=//div[@id='_107']/div/div[3]", "xpath:idRelative"],
+        ["xpath=//div[2]/div/div[3]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "094e82e5-8006-4764-bd32-cdf8d51e0cd4",
+      "comment": "",
+      "command": "assertElementPresent",
+      "target": "css=tr:nth-child(2) > .descricao-cell",
+      "targets": [
+        ["css=tr:nth-child(2) > .descricao-cell", "css:finder"],
+        ["xpath=//div[@id='root']/div/div[2]/div/div/div[5]/div/div/div/div/table/tbody/tr[2]/td[3]", "xpath:idRelative"],
+        ["xpath=//tr[2]/td[3]", "xpath:position"],
+        ["xpath=//td[contains(.,'Misteriosa_14:4:0')]", "xpath:innerText"]
       ],
       "value": ""
     }]

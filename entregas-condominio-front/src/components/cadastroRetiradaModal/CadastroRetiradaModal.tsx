@@ -72,12 +72,14 @@ export default function CadastroRetiradaModal(
       compenseColPaddingContent
       footer={[
         {
+          id: 'cadastro-retirada-cancelar',
           theme: ButtonThemes.Secondary,
           children: 'Cancelar',
           leftIcon: <TimesCircleIcon />,
           onClick: props.onCancel,
         },
         {
+          id: 'cadastro-retirada-confirmar',
           children: 'Confirmar',
           leftIcon: <CheckCircleIcon />,
           onClick: () => {
@@ -108,6 +110,7 @@ export default function CadastroRetiradaModal(
       <Row>
         <Col>
           <Select
+            id='cadastro-retirada-morador'
             label='Morador'
             placeholder='Selecione o morador...'
             value={morador}
