@@ -431,6 +431,131 @@
       ],
       "value": ""
     }]
+  }, {
+    "id": "15a19baf-c0b2-4454-8922-c9ec0f22f239",
+    "name": "Cadastrar Morador",
+    "commands": [{
+      "id": "36410feb-3314-4c5c-b0a9-f836a401983c",
+      "comment": "",
+      "command": "open",
+      "target": "http://localhost:3000/home",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "63715fcf-2577-4c69-a859-90f6a7c194d1",
+      "comment": "",
+      "command": "click",
+      "target": "css=#home-moradores",
+      "targets": [
+        ["css=#home-moradores > .component-big-block-button-label", "css:finder"],
+        ["xpath=//button[@id='home-moradores']/div[2]", "xpath:idRelative"],
+        ["xpath=//div[2]/button/div[2]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "8a5c37f5-1a7c-49a4-a292-56cd1a80cbbc",
+      "comment": "",
+      "command": "click",
+      "target": "css=#moradores-adicionar",
+      "targets": [
+        ["css=#moradores-adicionar > .component-button-label", "css:finder"],
+        ["xpath=//button[@id='moradores-adicionar']/div[2]", "xpath:idRelative"],
+        ["xpath=//div[3]/div/button/div[2]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "4dcf339e-7047-434c-84b7-9eb0bf2c97f4",
+      "comment": "",
+      "command": "click",
+      "target": "id=cadastro-morador-nome-input",
+      "targets": [
+        ["id=cadastro-morador-nome-input", "id"],
+        ["css=#cadastro-morador-nome-input", "css:finder"],
+        ["xpath=//input[@id='cadastro-morador-nome-input']", "xpath:attributes"],
+        ["xpath=//div[@id='cadastro-morador-nome']/div[2]/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "3d250f7d-82e3-4873-9361-c1fa7dd266ff",
+      "comment": "",
+      "command": "type",
+      "target": "id=cadastro-morador-nome-input",
+      "targets": [
+        ["id=cadastro-morador-nome-input", "id"],
+        ["css=#cadastro-morador-nome-input", "css:finder"],
+        ["xpath=//input[@id='cadastro-morador-nome-input']", "xpath:attributes"],
+        ["xpath=//div[@id='cadastro-morador-nome']/div[2]/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "Morador Teste"
+    }, {
+      "id": "a70063e7-9181-43f6-a913-a43fa611785d",
+      "comment": "",
+      "command": "click",
+      "target": "id=cadastro-morador-rg-input",
+      "targets": [
+        ["id=cadastro-morador-rg-input", "id"],
+        ["css=#cadastro-morador-rg-input", "css:finder"],
+        ["xpath=//input[@id='cadastro-morador-rg-input']", "xpath:attributes"],
+        ["xpath=//div[@id='cadastro-morador-rg']/div[2]/input", "xpath:idRelative"],
+        ["xpath=//div[2]/div/div/div[2]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "fa384da8-2224-428c-b724-44534139ab91",
+      "comment": "",
+      "command": "type",
+      "target": "id=cadastro-morador-rg-input",
+      "targets": [
+        ["id=cadastro-morador-rg-input", "id"],
+        ["css=#cadastro-morador-rg-input", "css:finder"],
+        ["xpath=//input[@id='cadastro-morador-rg-input']", "xpath:attributes"],
+        ["xpath=//div[@id='cadastro-morador-rg']/div[2]/input", "xpath:idRelative"],
+        ["xpath=//div[2]/div/div/div[2]/input", "xpath:position"]
+      ],
+      "value": "11111111"
+    }, {
+      "id": "6caa31c2-fa2c-4ded-b1db-12d32533a6c3",
+      "comment": "",
+      "command": "click",
+      "target": "id=cadastro-morador-casa-input",
+      "targets": [
+        ["id=cadastro-morador-casa-input", "id"],
+        ["css=#cadastro-morador-casa-input", "css:finder"],
+        ["xpath=//input[@id='cadastro-morador-casa-input']", "xpath:attributes"],
+        ["xpath=//div[@id='cadastro-morador-casa']/div[2]/input", "xpath:idRelative"],
+        ["xpath=//div[3]/div/div/div/div[2]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "11621e0a-36b7-4fb7-95e7-1836306731a4",
+      "comment": "",
+      "command": "click",
+      "target": "css=.component-select-single-option:nth-child(1)",
+      "targets": [
+        ["css=.component-select-single-option:nth-child(1)", "css:finder"],
+        ["xpath=//div[@id='_59']/div/div", "xpath:idRelative"],
+        ["xpath=//div[3]/div/div/div[2]/div/div", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "3eba0567-dd62-4848-a4f4-dbe6d88041fd",
+      "comment": "",
+      "command": "click",
+      "target": "css=#cadastro-morador-confirmar",
+      "targets": [
+        ["css=.component-button:nth-child(2)", "css:finder"],
+        ["xpath=//div[@id='_57']/div[3]/button[2]", "xpath:idRelative"],
+        ["xpath=//div[3]/button[2]", "xpath:position"],
+        ["xpath=//button[contains(.,'Confirmar')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }]
+  }, {
+    "id": "12c7496f-7dda-4654-9097-37cb997cbefb",
+    "name": "Registrar Retirada para o Morador",
+    "commands": []
   }],
   "suites": [{
     "id": "bb0d11d6-e6de-4b74-8b68-c3ee6a65a08a",
